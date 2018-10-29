@@ -12,7 +12,7 @@
 
 #include "TMP75B.h" 
 
-uint8_t DeviceID=DeviceID1;
+uint8_t TMP75B_DeviceID=TMP75B_DeviceID1;
 
 
 /*  
@@ -26,9 +26,9 @@ float TMP75B_getTemperature(I2C_HandleTypeDef i2c)
       static uint8_t buf[3];
       buf[0]=TemperatureRegister;
       
-      HAL_I2C_Master_Transmit(&i2c,DeviceID<<1,buf,0,100);
+      HAL_I2C_Master_Transmit(&i2c,TMP75B_DeviceID<<1,buf,0,100);
       HAL_Delay(1);
-      HAL_I2C_Master_Receive(&i2c,DeviceID<<1,buf,1,100);
+      HAL_I2C_Master_Receive(&i2c,TMP75B_DeviceID<<1,buf,1,100);
       
       return ((((buf[0]<<8)|buf[1])>>4)*0.0625);
 }
@@ -47,7 +47,7 @@ void TMP75B_setConfiguration(I2C_HandleTypeDef i2c)
     buf[1]=0x00;//Default value, you can change all bits
     buf[2]=0xFF;//Reserved
     
-    HAL_I2C_Master_Transmit(&i2c,DeviceID<<1,buf,2,100);
+    HAL_I2C_Master_Transmit(&i2c,TMP75B_DeviceID<<1,buf,2,100);
 }
 
 /*  
@@ -61,9 +61,9 @@ uint8_t TMP75B_getConfiguration(I2C_HandleTypeDef i2c)
     static uint8_t buf[2];
     buf[0]=ConfigurationRegister;
     
-    HAL_I2C_Master_Transmit(&i2c,DeviceID<<1,buf,0,100);
+    HAL_I2C_Master_Transmit(&i2c,TMP75B_DeviceID<<1,buf,0,100);
     HAL_Delay(1);
-    HAL_I2C_Master_Receive(&i2c,DeviceID<<1,buf,1,100);
+    HAL_I2C_Master_Receive(&i2c,TMP75B_DeviceID<<1,buf,1,100);
     
     return buf[1];
 }
@@ -83,7 +83,7 @@ void TMP75B_setLowLimit(I2C_HandleTypeDef i2c,uint8_t MSB,uint8_t LSB)
     buf[0]=TemperatureLowLimit;
     buf[1]=MSB;
     buf[2]=LSB<<4;
-    HAL_I2C_Master_Transmit(&i2c,DeviceID<<1,buf,2,100);
+    HAL_I2C_Master_Transmit(&i2c,TMP75B_DeviceID<<1,buf,2,100);
 }
 
 /*  
@@ -97,9 +97,9 @@ uint16_t TMP75B_getLowLimit(I2C_HandleTypeDef i2c)
     static uint8_t buf[2];
     
     buf[0]=TemperatureLowLimit;
-    HAL_I2C_Master_Transmit(&i2c,DeviceID<<1,buf,0,100);
+    HAL_I2C_Master_Transmit(&i2c,TMP75B_DeviceID<<1,buf,0,100);
     HAL_Delay(1);
-    HAL_I2C_Master_Receive(&i2c,DeviceID<<1,buf,1,100);
+    HAL_I2C_Master_Receive(&i2c,TMP75B_DeviceID<<1,buf,1,100);
     
     return ((buf[0]<<8)|(buf[1]<<4));
 }
@@ -119,7 +119,7 @@ void TMP75B_setHighLimit(I2C_HandleTypeDef i2c,uint8_t MSB,uint8_t LSB)
     buf[0]=TemperatureHighLimit;
     buf[1]=MSB;
     buf[2]=LSB<<4;
-    HAL_I2C_Master_Transmit(&i2c,DeviceID<<1,buf,2,100);
+    HAL_I2C_Master_Transmit(&i2c,TMP75B_DeviceID<<1,buf,2,100);
 }
 
 /*  
@@ -135,9 +135,9 @@ uint16_t TMP75B_getHighLimit(I2C_HandleTypeDef i2c)
     static uint8_t buf[2];
     
     buf[0]=TemperatureHighLimit;
-    HAL_I2C_Master_Transmit(&i2c,DeviceID<<1,buf,0,100);
+    HAL_I2C_Master_Transmit(&i2c,TMP75B_DeviceID<<1,buf,0,100);
     HAL_Delay(1);
-    HAL_I2C_Master_Receive(&i2c,DeviceID<<1,buf,1,100);
+    HAL_I2C_Master_Receive(&i2c,TMP75B_DeviceID<<1,buf,1,100);
     
     return ((buf[0]<<8)|(buf[1]<<4)); 
 }

@@ -20,14 +20,14 @@
 	#define     __STM32L4xx_HAL_I2C_H
 	#endif	
 
-	#define     DeviceID1 0x48    //GND     GND     GND
-	#define     DeviceID2 0x49    //GND     GND     VCC
-	#define     DeviceID3 0x4A    //GND     VCC     GND
-	#define     DeviceID4 0x4B    //GND     VCC     VCC
-	#define     DeviceID5 0x4C    //VCC     GND     GND
-	#define     DeviceID6 0x4D    //VCC     GND     VCC
-	#define     DeviceID7 0x4E    //VCC     VCC     GND
-	#define     DeviceID8 0x4F    //VCC     VCC     VCC
+	#define     TMP75B_DeviceID1 0x48    //GND     GND     GND
+	#define     TMP75B_DeviceID2 0x49    //GND     GND     VCC
+	#define     TMP75B_DeviceID3 0x4A    //GND     VCC     GND
+	#define     TMP75B_DeviceID4 0x4B    //GND     VCC     VCC
+	#define     TMP75B_DeviceID5 0x4C    //VCC     GND     GND
+	#define     TMP75B_DeviceID6 0x4D    //VCC     GND     VCC
+	#define     TMP75B_DeviceID7 0x4E    //VCC     VCC     GND
+	#define     TMP75B_DeviceID8 0x4F    //VCC     VCC     VCC
 	
 	/*
 	Pointer Registers
